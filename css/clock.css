@@ -1,0 +1,78 @@
+.clock {
+  width: 80%;
+  /* height: clamp; */
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.clock h1 {
+  font-size: 150px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  position: relative;
+}
+
+.clock__setting {
+  font-size: 26px;
+  user-select: none;
+  opacity: 0;
+}
+.clock__setting:hover {
+  opacity: 1;
+}
+.clock__setting span {
+  cursor: pointer;
+}
+
+.clock__setting-toggle {
+  font-size: 14px;
+  position: absolute;
+  top: 90px;
+  right: -30px;
+  width: 160px;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.toggle-outer {
+  width: 40px;
+  height: 20px;
+  border-radius: 15px;
+  background-color: rgb(71, 211, 71);
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.hour12-outer {
+  background-color: #aaa;
+}
+
+.hour12-inner {
+  left: 3px;
+}
