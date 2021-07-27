@@ -7,6 +7,8 @@ Make ToDoList using vanillaJS
 1. 12hour clock to 24hour clock toggle menu.
 2. Different greeting message based on current time.
 3. User login function.
+4. Todolist.
+5. Todolist drag-and-drop function.
 
 ## Issues
 
