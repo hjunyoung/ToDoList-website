@@ -41,7 +41,25 @@
     <section class="greeting deleted">
       <h1 class="greeting__user"></h1>
     </section>
+    <section class="todo deleted">
+      <form action="" class="todo__form">
+        <label for="todo__form__input">
+          <h2>Write a todo</h2>
+          <input
+            type="text"
+            name="todolist"
+            id="todo__form__input"
+            autocomplete="off"
+          />
+        </label>
+      </form>
+      <section class="todo__list-container">
+        <ul class="todo__list-container__lists"></ul>
+      </section>
+    </section>
+
     <script src="js/clock.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/todo.js"></script>
   </body>
 </html>
