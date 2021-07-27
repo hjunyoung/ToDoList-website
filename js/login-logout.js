@@ -39,6 +39,7 @@ const handleLoginSubmit = (e) => {
   if (username) {
     localStorage.setItem(USERNAME_KEY, username);
     paintUserGreeting(username);
+    window.location.reload();
   } else {
     loginInput.setCustomValidity("Only spaces are not allowed");
   }
@@ -52,6 +53,7 @@ const handleKeyDownSubmit = () => {
 };
 
 const handleLogout = (e) => {
+  e.preventDefault();
   const logout = window.confirm(
     "Your todolist will be deleted. Are you sure you want to logout?"
   );
