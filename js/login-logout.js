@@ -3,6 +3,7 @@ const loginForm = loginContainer.querySelector(".login__form");
 const loginInput = loginForm.querySelector("#login__form__input");
 const greeting = document.querySelector(".greeting");
 const userGreeting = greeting.querySelector(".greeting__user");
+const logoutButton = greeting.querySelector(".logout");
 
 const DELETED_CLASS = "deleted";
 const USERNAME_KEY = "username";
@@ -50,11 +51,24 @@ const handleKeyDownSubmit = () => {
   loginInput.setCustomValidity("");
 };
 
+const handleLogout = (e) => {
+  const logout = window.confirm(
+    "Your todolist will be deleted. Are you sure you want to logout?"
+  );
+  if (logout) {
+    window.location.reload();
+    localStorage.clear();
+    loginContainer.classList.remove(DELETED_CLASS);
+    greeting.classList.add(DELETED_CLASS);
+  }
+};
+
 const handleLoad = (e) => {
   let localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     paintUserGreeting(localUsername);
     setInterval(paintUserGreeting, 1000, localUsername);
+    logoutButton.addEventListener("click", handleLogout);
   } else {
     loginContainer.classList.remove(DELETED_CLASS);
     loginForm.addEventListener("submit", handleLoginSubmit);
