@@ -1,0 +1,16 @@
+.setting {
+  user-select: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 26px;
+}
+.setting__icon {
+  cursor: pointer;
+}
+
+.setting__menu {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  color: #fff;
+}

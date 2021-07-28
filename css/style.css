@@ -1,6 +1,7 @@
 @import url(reset.css);
 @import url(clock.css);
 @import url(todo.css);
+@import url(setting.css);
 
 * {
   box-sizing: border-box;
@@ -15,6 +16,10 @@
 
 .hidden {
   visibility: hidden;
+  opacity: 0;
+}
+
+.transparent {
   opacity: 0;
 }
 
