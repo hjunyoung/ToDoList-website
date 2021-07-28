@@ -9,7 +9,7 @@ Make ToDoList using vanillaJS
 3. User login function.
 4. Todolist.
 5. Todolist drag-and-drop function.
-
+6. Font color and background color custumizizing.
    <br>
 
 ## Issues
