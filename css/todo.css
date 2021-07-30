@@ -10,3 +10,8 @@
 .drag-over {
   background: rgba(0, 0, 0, 0.2);
 }
+
+.todo__list-container__lists span:focus {
+  outline: 0;
+  border: 0;
+}
