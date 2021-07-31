@@ -182,6 +182,11 @@ const paintTodoList = (typedTodo) => {
   todoItem.appendChild(deleteButton);
   deleteButton.addEventListener('click', deleteTodo);
 
+  const inputTime = document.createElement('p');
+  inputTime.innerText = typedTodo.inputTime;
+  inputTime.classList.add('input-time', 'deleted');
+  todoItem.appendChild(inputTime);
+
   if (typedTodo.checked) {
     todoText.classList.add(CHECKED_TODO_CLASS);
   } else {
@@ -199,6 +204,20 @@ const loadTodo = () => {
   }
 };
 
+const getInputTime = () => {
+  const options = {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  };
+  const now = new Date();
+  const inputTime = now.toLocaleString('en-us', options);
+  return inputTime;
+};
+
 const handleTodoSubmit = (e) => {
   e.preventDefault();
   const inputText = todoInput.value.trim();
@@ -206,6 +225,7 @@ const handleTodoSubmit = (e) => {
     todo: inputText,
     id: Date.now(),
     checked: false,
+    inputTime: getInputTime(),
   };
 
   if (inputText) {

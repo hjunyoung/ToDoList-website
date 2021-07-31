@@ -11,7 +11,28 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-.todo__list-container__lists span:focus {
+.todo__list-container span:focus {
   outline: 0;
   border: 0;
+}
+
+.todo__list-container li {
+  position: relative;
+}
+
+.input-time {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.8em;
+  padding: 4px;
+  border-radius: 4px;
+  top: 5px;
+  left: 70px;
+  width: 130px;
+}
+
+.todo__list-container li:hover .input-time {
+  display: block;
+  visibility: visible;
 }
