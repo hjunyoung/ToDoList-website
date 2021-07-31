@@ -27,8 +27,21 @@ const handleGeoSuccess = (GeolocationPosition) => {
 };
 
 const handleGeoFail = () => {
-  alert(`Can't fint you. No weather for you`);
+  const geoModal = document.querySelector('.modal');
+  geoModal.classList.remove('deleted');
+
+  const modalContent = document.querySelector('.modal__content');
+  const buttonArea = document.querySelector('.modal__button');
+  const failMessage = document.createElement('p');
+  const closeButton = document.createElement('input');
+  failMessage.innerText = "Can't find you. No weather for you.";
+  closeButton.type = 'submit';
+  closeButton.value = 'Okay';
+  closeButton.addEventListener('click', closeModal);
+
+  modalContent.appendChild(failMessage);
+  buttonArea.appendChild(closeButton);
+  window.addEventListener('keydown', ecsModalClose);
 };
 
 navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
-// navigator.geolocation.watchPosition(handleGeoSuccess, handleGeoFail);

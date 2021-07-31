@@ -2,6 +2,7 @@
 @import url(clock.css);
 @import url(todo.css);
 @import url(setting.css);
+@import url(modal.css);
 
 * {
   box-sizing: border-box;

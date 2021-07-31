@@ -1,0 +1,44 @@
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__background-blur {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(4px) grayscale(20%);
+}
+
+.modal__window {
+  position: absolute;
+  border-radius: 20px;
+  width: 400px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
+.modal__content {
+  color: #fff;
+  font-size: 20px;
+}
+
+.modal__button {
+  align-self: flex-end;
+}
+
+.modal__button input {
+  width: 60px;
+  height: 30px;
+  font-size: 1em;
+  cursor: pointer;
+}
