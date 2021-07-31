@@ -9,8 +9,8 @@ const settingSaveButton = settingMenu.querySelector('[type=submit]');
 
 const FONT_COLOR_KEY = 'font-color';
 const BACKGROUND_COLOR_KEY = 'background-color';
-let fontColor;
-let backgroundColor;
+let fontColor = localStorage.getItem(FONT_COLOR_KEY);
+let backgroundColor = localStorage.getItem(BACKGROUND_COLOR_KEY);
 
 const storeFontColor = (e) => {
   fontColor = e.target.value;
@@ -58,8 +58,9 @@ setting.addEventListener('mouseleave', handleSettingMouseLeave);
 settingIcon.addEventListener('click', handleSettingClick);
 
 window.addEventListener('load', () => {
-  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY);
-  const defaultBackgroundColor = localStorage.getItem(BACKGROUND_COLOR_KEY);
+  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#000000';
+  const defaultBackgroundColor =
+    localStorage.getItem(BACKGROUND_COLOR_KEY) || '#FFFFFF';
   const fontInputArea = fontSetting.querySelector('input');
   const backgroundInputArea = backgroundSetting.querySelector('input');
 
