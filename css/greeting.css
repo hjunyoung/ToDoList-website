@@ -1,0 +1,15 @@
+.greeting {
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.logout {
+  position: absolute;
+  right: 1vw;
+  bottom: 1vh;
+  display: none;
+}
+.greeting:hover .logout {
+  display: block;
+}

@@ -36,14 +36,14 @@ settingSaveButton.addEventListener('click', saveSetting);
 
 const retainSettingMenu = () => {
   if (settingMenu.classList.contains('deleted')) {
-    settingIcon.classList.add('hidden');
+    settingIcon.style.opacity = 0.3;
   } else {
-    settingIcon.classList.remove('hidden');
+    settingIcon.style.opacity = 1;
   }
 };
 
 const handleSettingMouseEnter = () => {
-  settingIcon.classList.remove('hidden');
+  settingIcon.style.opacity = 1;
 };
 const handleSettingMouseLeave = () => {
   retainSettingMenu();
@@ -58,9 +58,9 @@ setting.addEventListener('mouseleave', handleSettingMouseLeave);
 settingIcon.addEventListener('click', handleSettingClick);
 
 window.addEventListener('load', () => {
-  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#000000';
+  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#DEDEDE';
   const defaultBackgroundColor =
-    localStorage.getItem(BACKGROUND_COLOR_KEY) || '#FFFFFF';
+    localStorage.getItem(BACKGROUND_COLOR_KEY) || '#3c6844';
   const fontInputArea = fontSetting.querySelector('input');
   const backgroundInputArea = backgroundSetting.querySelector('input');
 

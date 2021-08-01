@@ -8,91 +8,103 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <section class="modal deleted">
-      <section class="modal__background-blur"></section>
-      <section class="modal__window">
-        <section class="modal__content"></section>
-        <section class="modal__button"></section>
+    <section class="content">
+      <section class="modal deleted">
+        <section class="modal__background-blur"></section>
+        <section class="modal__window">
+          <section class="modal__content"></section>
+          <section class="modal__button"></section>
+        </section>
       </section>
-    </section>
-    <section class="setting">
-      <section class="setting__icon hidden">
-        <p>⚙</p>
+
+      <section class="setting">
+        <section class="setting__icon">
+          <p>⚙</p>
+        </section>
+        <section class="setting__menu deleted">
+          <form class="setting--font">
+            <label for="font-color">
+              <p>font color</p>
+              <input type="color" id="font-color" name="font-color" />
+            </label>
+          </form>
+          <form class="setting--background">
+            <label for="background-color">
+              <p>background color</p>
+              <input
+                type="color"
+                name="background-color"
+                id="background-color"
+              />
+            </label>
+          </form>
+          <input type="submit" value="Save Colors" />
+        </section>
       </section>
-      <section class="setting__menu deleted">
-        <form class="setting--font">
-          <label for="font-color">
-            <p>font color</p>
-            <input type="color" id="font-color" name="font-color" />
-          </label>
-        </form>
-        <form class="setting--background">
-          <label for="background-color">
-            <p>background color</p>
-            <input type="color" name="background-color" id="background-color" />
-          </label>
-        </form>
-        <input type="submit" value="Save" />
+
+      <section class="greeting deleted">
+        <h1 class="greeting__user"></h1>
+        <input class="logout" type="submit" value="Log Out" />
       </section>
-    </section>
-    <section class="weather">
-      <div class="weather__temperature">
-        <img src="" class="weather__icon" />
-        <p class="temperature"></p>
-      </div>
-      <div class="weather__city">
-        <p class="city-name"></p>
-      </div>
-    </section>
-    <section class="calendar"></section>
-    <section class="clock">
-      <div></div>
-      <h1>00:00</h1>
-      <div class="clock__setting">
-        <span>⚙</span>
-        <div class="clock__setting-toggle hidden">
-          <p>24hour clock</p>
-          <div class="toggle-outer">
-            <div class="toggle-inner"></div>
+
+      <section class="calendar"></section>
+
+      <section class="weather">
+        <div class="weather__city">
+          <p class="city-name"></p>
+        </div>
+        <div class="weather__temperature">
+          <img src="" class="weather__icon" />
+          <p class="temperature"></p>
+        </div>
+      </section>
+
+      <section class="clock">
+        <div></div>
+        <h1>00:00</h1>
+        <div class="clock__setting">
+          <span>⚙</span>
+          <div class="clock__setting-toggle hidden">
+            <p>24hour clock</p>
+            <div class="toggle-outer">
+              <div class="toggle-inner"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="login deleted">
-      <form action="" class="login__form">
-        <label for="login__form__input">
-          <p>What is your name?</p>
-          <input
-            type="text"
-            name="username"
-            id="login__form__input"
-            value=""
-            maxlenght="30"
-            autocomplete="off"
-            autofocus
-          />
-        </label>
-        <input type="submit" value="Log In" />
-      </form>
-    </section>
-    <section class="greeting deleted">
-      <h1 class="greeting__user"></h1>
-      <input class="logout" type="submit" value="Log Out" />
-    </section>
-    <section class="todo deleted">
-      <form action="" class="todo__form">
-        <label for="todo__form__input">
-          <h2>Write a todo</h2>
+      </section>
+
+      <section class="login deleted">
+        <form action="" class="login__form">
+          <label for="login__form__input">
+            <p>What is your name?</p>
+            <input
+              type="text"
+              name="username"
+              id="login__form__input"
+              value=""
+              maxlenght="30"
+              autocomplete="off"
+              autofocus
+            />
+          </label>
+          <input type="submit" value="Log In" />
+        </form>
+      </section>
+
+      <section class="todo deleted">
+        <h2>My todo list</h2>
+        <section class="todo__list-container">
+          <ul class="todo__list-container__lists"></ul>
+        </section>
+        <form action="" class="todo__form">
           <input
             type="text"
             name="todolist"
             id="todo__form__input"
             autocomplete="off"
+            placeholder="Write a todo here"
           />
-        </label>
-      </form>
-      <section class="todo__list-container">
-        <ul class="todo__list-container__lists"></ul>
+        </form>
       </section>
     </section>
 

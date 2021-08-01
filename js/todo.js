@@ -1,6 +1,6 @@
 const todo = document.querySelector('.todo');
 const todoForm = todo.querySelector('.todo__form');
-const todoInput = todoForm.querySelector('#todo__form__input');
+const todoInput = document.querySelector('#todo__form__input');
 const listContainer = todo.querySelector('.todo__list-container__lists');
 
 const TODO_KEY = 'todoList';
@@ -159,7 +159,7 @@ const addEditable = (e) => {
 const paintTodoList = (typedTodo) => {
   const todoItemContainer = document.createElement('div');
   todoItemContainer.draggable = 'true';
-  listContainer.appendChild(todoItemContainer);
+  listContainer.prepend(todoItemContainer);
   makeDraggable(todoItemContainer);
 
   const todoItem = document.createElement('li');

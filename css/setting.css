@@ -1,18 +1,41 @@
 .setting {
   user-select: none;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  position: relative;
   font-size: 26px;
 }
 .setting__icon {
+  opacity: 0.3;
   cursor: pointer;
   height: 30px;
   width: 30px;
 }
 
 .setting__menu {
+  font-size: 1.1rem;
+  width: 60%;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   color: #fff;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.setting__menu > * {
+  margin: 5px 10px;
+}
+
+.setting__menu label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting__menu > input {
+  align-self: center;
+  width: 50%;
+  cursor: pointer;
 }

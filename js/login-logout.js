@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+const content = document.querySelector('.content');
+
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
 const loginInput = loginForm.querySelector('#login__form__input');

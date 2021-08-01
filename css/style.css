@@ -1,13 +1,20 @@
 @import url(reset.css);
 @import url(clock.css);
+@import url(greeting.css);
 @import url(todo.css);
 @import url(setting.css);
 @import url(modal.css);
+@import url(weather.css);
+@import url(calendar.css);
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  overflow: hidden;
 }
 
 .deleted {
@@ -24,10 +31,56 @@
   opacity: 0;
 }
 
-body {
+.content {
+  overflow: hidden;
+  display: grid;
+  height: 100vh;
+  grid-template: 20px repeat(16, 1fr) / 2fr 2fr 1fr;
+  border: 1px solid black;
+  padding: 10px 20px 20px;
+  grid-gap: 20px 30px;
+  font-size: 1.5rem;
+}
+
+.content > * {
+  border-radius: 15px;
+  box-shadow: 7px 7px 14px 0 rgba(0, 0, 0, 0.3),
+    -7px -7px 14px 0 rgba(255, 255, 255, 0.2);
+}
+.setting {
+  box-shadow: none;
+}
+
+.login,
+.greeting,
+.weather,
+.calendar {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+.login,
+.greeting {
+  grid-area: 2 / 1 / 4 / 2;
+}
+
+.calendar {
+  grid-area: 4 / 1 / 6 / 2;
+  align-items: center;
+}
+
+.weather {
+  grid-area: 6 / 1 / 10 / 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.clock {
+  grid-area: 2 / 2 / 6 / -1;
+}
+
+.todo {
+  grid-area: 6 / 2 / -1 / 3;
 }

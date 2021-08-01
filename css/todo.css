@@ -1,23 +1,100 @@
 .cutline {
   text-decoration: line-through;
-  color: #666;
+  opacity: 0.4;
 }
 
 .dragged {
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .drag-over {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.todo__list-container span:focus {
-  outline: 0;
+.todo {
+  padding: 1vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.todo h2 {
+  width: 98%;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
+    -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
+  height: clamp(40px, 5vh, 60px);
+  margin-bottom: 1vh;
+}
+
+.todo__form {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#todo__form__input {
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
+    inset -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
   border: 0;
+  outline: none;
+  width: 100%;
+  height: clamp(30px, 3.5vh, 40px);
+  position: relative;
+  padding: 0 0.5vw;
+}
+
+#todo__form__input::placeholder {
+  opacity: 0.7;
+}
+
+.todo__list-container {
+  margin: 2vh 0;
+  width: 95%;
+  position: absolute;
+  top: 6vh;
+  height: 78%;
+  overflow: hidden;
+}
+
+.todo__list-container:hover {
+  overflow-y: auto;
 }
 
 .todo__list-container li {
+  font-size: 1.2rem;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.todo__list-container li span {
+  width: 80%;
+  margin-left: 1vw;
+}
+
+.todo__list-container li button {
+  visibility: hidden;
+}
+.todo__list-container li:hover button {
+  visibility: visible;
+}
+
+.todo__list-container li input {
+  cursor: pointer;
 }
 
 .input-time {

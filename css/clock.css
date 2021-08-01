@@ -1,8 +1,9 @@
 .clock {
-  width: 80%;
+  width: 100%;
   /* height: clamp; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
   user-select: none;
 }
 
@@ -16,7 +17,6 @@
 
 .clock > div {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 30%;
   position: relative;
@@ -26,19 +26,21 @@
   font-size: 26px;
   user-select: none;
   opacity: 0;
+  display: flex;
+  justify-content: flex-start;
 }
 .clock__setting:hover {
   opacity: 1;
 }
-.clock__setting span {
+.clock__setting > span {
   cursor: pointer;
 }
 
 .clock__setting-toggle {
   font-size: 14px;
   position: absolute;
-  top: 90px;
-  right: -30px;
+  top: 120%;
+  left: 5%;
   width: 160px;
   height: 36px;
   background-color: rgba(0, 0, 0, 0.8);
