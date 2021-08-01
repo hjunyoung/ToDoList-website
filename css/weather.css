@@ -7,21 +7,24 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding: 0 1vw;
+  font-weight: bold;
 }
 
-.weather__temperature {
+.weather__description {
   width: 35vw;
   height: 12vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.weather__temperature img {
+.weather__description img {
   user-select: none;
 }
 
-.weather__temperature > * {
+.weather__description > * {
   border-radius: 15px;
   box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
     inset -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
@@ -30,4 +33,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.description {
+  font-size: 0.8rem;
+  position: absolute;
+  top: 1vh;
+}
+
+.weather__description--icon,
+.weather__description--temperature,
+.weather__description--humidity {
+  display: flex;
+  flex-direction: column;
 }

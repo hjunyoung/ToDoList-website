@@ -16,13 +16,23 @@ const handleGeoSuccess = (GeolocationPosition) => {
     .then((data) => {
       const weather = document.querySelector('.weather');
       const temperature = weather.querySelector('.temperature');
+      const humidity = weather.querySelector('.humidity');
       const weatherIcon = weather.querySelector('.weather__icon');
+      const weatherDescription = weather.querySelector(
+        '.weather__description--icon p'
+      );
       const city = weather.querySelector('.city-name');
 
       temperature.innerText = `${data.main.temp.toFixed(1)}℃`;
+      weatherDescription.innerText = data.weather[0].main;
+      humidity.innerText = `${data.main.humidity}%`;
       weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       weatherIcon.alt = `${data.weather[0].main}`;
-      city.innerText = `@ ${data.name}`;
+
+      const countryCode = data.sys.country;
+      const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+      const country = regionNames.of(countryCode);
+      city.innerText = `${data.name}, ${country}`;
     });
 };
 
