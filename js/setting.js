@@ -1,3 +1,5 @@
+import changeGithubImage from './github-icon.js';
+
 const { body } = document;
 const setting = document.querySelector('.setting');
 const settingIcon = document.querySelector('.setting__icon');
@@ -20,6 +22,7 @@ const storeFontColor = (e) => {
 const storeBackgroundColor = (e) => {
   backgroundColor = e.target.value;
   body.style.backgroundColor = backgroundColor;
+  changeGithubImage(backgroundColor);
 };
 
 const saveSetting = (e) => {
@@ -69,4 +72,6 @@ window.addEventListener('load', () => {
 
   fontInputArea.value = defaultFontColor;
   backgroundInputArea.value = defaultBackgroundColor;
+
+  changeGithubImage(defaultBackgroundColor);
 });
