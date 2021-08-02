@@ -1,41 +1,71 @@
 .setting {
   user-select: none;
   position: relative;
+  top: 5px;
   font-size: 26px;
+  display: flex;
+  align-items: center;
 }
+
+.setting > p {
+  opacity: 0.4;
+  font-size: 0.8rem;
+}
+
 .setting__icon {
-  opacity: 0.3;
+  opacity: 0.4;
   cursor: pointer;
   height: 30px;
   width: 30px;
 }
 
 .setting__menu {
-  font-size: 1.1rem;
-  width: 60%;
-  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  width: min(200px, 60%);
+  background-color: #0c150e;
   border-radius: 10px;
   color: #fff;
   display: flex;
-  position: relative;
+  position: absolute;
+  top: 30px;
+  left: -8px;
   z-index: 10;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: space-between;
 }
 
-.setting__menu > * {
-  margin: 5px 10px;
+.setting__menu::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: -4px;
+  left: 7%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  background-color: #0c150e;
 }
 
-.setting__menu label {
+.setting__menu > * {
+  margin: 4px 10px;
+}
+
+.setting__menu form {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .setting__menu > input {
+  font-size: 0.75rem;
   align-self: center;
   width: 50%;
   cursor: pointer;
+}
+
+.setting__menu input[type='color'] {
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: none;
 }
