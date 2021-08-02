@@ -1,6 +1,6 @@
 .clock {
   width: 100%;
-  /* height: clamp; */
+  min-width: 450px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
+  padding: 1% 2%;
+  box-shadow: inset 3px 3px 6px 0 rgba(0, 0, 0, 0.25),
+    inset -3px -3px 6px 0 rgba(255, 255, 255, 0.25);
+  text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), 6px -2px 12px rgba(0, 0, 0, 0.2),
+    -6px -6px 12px rgba(255, 255, 255, 0.2),
+    -6px 1px 12px rgba(255, 255, 255, 0.1);
 }
 
 .clock > div {
@@ -43,7 +50,7 @@
   left: 5%;
   width: 160px;
   height: 36px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #0c150e;
   border-radius: 12px;
   color: #fff;
   display: flex;
