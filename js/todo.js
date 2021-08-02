@@ -79,7 +79,7 @@ function dragEnd() {
   const draggable = document.querySelectorAll('[draggable=true');
   draggable.forEach((todoItem) => {
     const checkBox = todoItem.firstChild.firstChild;
-    const deleteButton = todoItem.firstChild.lastChild;
+    const deleteButton = todoItem.firstChild.childNodes[2];
     checkBox.addEventListener('click', handleCheckTodo);
     deleteButton.addEventListener('click', deleteTodo);
   });

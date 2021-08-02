@@ -21,3 +21,7 @@ Make ToDoList using vanillaJS
 - [x] When setting only one color among font-color and background-color, the other color value is saved as `undefined`.<br>
 
   - Issue solved: By saving current font-color and background-color, if those color aren't saved when setting colors.
+
+- [x] When deleting todo after drag-and-drop, deleting todo doesn't work. After drag-and-drop, delete event listener moves from delete button to input time tooltip<br>
+
+  - Issue solved: By setting event listener to delete button on drag end event.
