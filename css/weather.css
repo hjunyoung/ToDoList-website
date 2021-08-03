@@ -1,5 +1,5 @@
 .weather__city {
-  width: 35vw;
+  width: 90%;
   height: 20%;
   border-radius: 15px;
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
@@ -12,7 +12,7 @@
 }
 
 .weather__description {
-  width: 35vw;
+  width: 90%;
   height: 12vh;
   display: flex;
   justify-content: space-between;
@@ -46,4 +46,26 @@
 .weather__description--humidity {
   display: flex;
   flex-direction: column;
+}
+
+.weather-forecast {
+  display: flex;
+  font-size: 1rem;
+  justify-content: space-evenly;
+}
+
+.day-later {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  height: 90%;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.3),
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  width: 13%;
+}
+
+.day-later > section {
+  text-align: center;
 }

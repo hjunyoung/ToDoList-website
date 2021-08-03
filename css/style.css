@@ -77,6 +77,10 @@ body {
   justify-content: space-evenly;
 }
 
+.weather-forecast {
+  grid-area: 10 / 1 / -1 / 2;
+}
+
 .clock {
   grid-area: 2 / 2 / 6 / -1;
 }

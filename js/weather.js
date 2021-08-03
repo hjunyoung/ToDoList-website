@@ -1,14 +1,6 @@
 import API_KEY from './api-key.js';
 
-const handleGeoSuccess = (GeolocationPosition) => {
-  const {
-    coords: { latitude },
-  } = GeolocationPosition;
-  const {
-    coords: { longitude },
-  } = GeolocationPosition;
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
-
+const getCurrentWeather = (url) => {
   fetch(url)
     .then((response) => {
       return response.json();
@@ -36,6 +28,91 @@ const handleGeoSuccess = (GeolocationPosition) => {
     });
 };
 
+const getDayArray = () => {
+  const dayArray = [];
+  const days = {
+    0: 'Sun',
+    1: 'Mon',
+    2: 'Tue',
+    3: 'Wed',
+    4: 'Thu',
+    5: 'Fri',
+    6: 'Sat',
+  };
+  for (let i = 1; i <= 7; i++) {
+    const now = new Date();
+    let index = now.getDay() + i;
+    index = index > 6 ? index - 7 : index;
+    dayArray.push(days[index]);
+  }
+  return dayArray;
+};
+
+const getWeatherForecast = (url) => {
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      const forecastContainerArray = document.querySelectorAll('.day-later');
+      const forecastData = data.daily;
+      const dayArray = getDayArray();
+      const today = new Date();
+
+      for (let i = 1; i < forecastData.length; i++) {
+        const forecastContainer = forecastContainerArray[i - 1];
+        const maxTempBox = forecastContainer.querySelector('.max-temp');
+        const minTempBox = forecastContainer.querySelector('.min-temp');
+        const rainVolumnBox = forecastContainer.querySelector('.rain-volumn');
+        const weatherBox = forecastContainer.querySelector(
+          '.weather-description'
+        );
+        const IconBox = forecastContainer.querySelector('.icon');
+        const dateBox = forecastContainer.querySelector('.date');
+        const dayBox = forecastContainer.querySelector('.day');
+
+        const maxTemp = document.createElement('p');
+        const minTemp = document.createElement('p');
+        const rainVolumn = document.createElement('p');
+        const weather = document.createElement('p');
+        const weatherIcon = document.createElement('img');
+        const date = document.createElement('p');
+        const day = document.createElement('p');
+
+        maxTemp.innerText = `${forecastData[i].temp.max.toFixed(1)}℃`;
+        minTemp.innerText = `${forecastData[i].temp.min.toFixed(1)}℃`;
+        rainVolumn.innerText = `${forecastData[i].rain || 0}mm/h`;
+        weather.innerText = `${forecastData[i].weather[0].main}`;
+        weatherIcon.src = `http://openweathermap.org/img/wn/${forecastData[i].weather[0].icon}.png`;
+        today.setDate(today.getDate() + 1);
+        date.innerText = `${today.getMonth() + 1}/${today.getDate()}`;
+        day.innerText = dayArray[i - 1];
+
+        maxTempBox.appendChild(maxTemp);
+        minTempBox.appendChild(minTemp);
+        rainVolumnBox.appendChild(rainVolumn);
+        weatherBox.appendChild(weather);
+        IconBox.appendChild(weatherIcon);
+        dateBox.appendChild(date);
+        dayBox.appendChild(day);
+      }
+    });
+};
+
+const handleGeoSuccess = (GeolocationPosition) => {
+  const {
+    coords: { latitude },
+  } = GeolocationPosition;
+  const {
+    coords: { longitude },
+  } = GeolocationPosition;
+  const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
+  const urlWeatherForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,minutely&appid=${API_KEY}`;
+
+  getCurrentWeather(urlCurrentWeather);
+  getWeatherForecast(urlWeatherForecast);
+};
+
 const handleGeoFail = () => {
   const geoModal = document.querySelector('.modal');
   geoModal.classList.remove('deleted');
@@ -54,4 +131,11 @@ const handleGeoFail = () => {
   window.addEventListener('keydown', ecsModalClose);
 };
 
-navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
+const handleLoadWeather = (e) => {
+  let localUsername = localStorage.getItem(USERNAME_KEY);
+  if (localUsername) {
+    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
+  }
+};
+
+window.addEventListener('load', handleLoadWeather);
