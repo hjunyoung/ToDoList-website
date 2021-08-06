@@ -133,11 +133,11 @@ const handleGeoFail = () => {
   window.addEventListener('keydown', escModalClose);
 };
 
-const handleLoadWeather = () => {
+const loadWeather = () => {
   const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
   }
 };
 
-window.addEventListener('load', handleLoadWeather);
+export default loadWeather;

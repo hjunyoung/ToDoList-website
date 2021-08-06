@@ -10,7 +10,7 @@ const calendarYear = calendar.querySelector(
   '.calendar--year .calendar__content'
 );
 
-const getDate = () => {
+const getCurrentDate = () => {
   const options = {
     weekday: 'short',
     month: 'short',
@@ -29,5 +29,4 @@ const getDate = () => {
   calendarYear.innerHTML = `<p>${year}</p>`;
 };
 
-getDate();
-setInterval(getDate, 1000);
+export default getCurrentDate;

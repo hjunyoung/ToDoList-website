@@ -51,5 +51,4 @@ window.addEventListener('click', (e) => {
   handleSettingBlur(e, toggleMenu, settingContainer);
 });
 
-getTime();
-setInterval(getTime, 1000);
+export default getTime;

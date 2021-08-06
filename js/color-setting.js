@@ -57,7 +57,8 @@ settingIcon.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
   handleSettingBlur(e, settingMenu, settingIcon);
 });
-window.addEventListener('load', () => {
+
+const loadColor = () => {
   const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#DEDEDE';
   const defaultBackgroundColor =
     localStorage.getItem(BACKGROUND_COLOR_KEY) || '#3c6844';
@@ -71,4 +72,6 @@ window.addEventListener('load', () => {
   backgroundInputArea.value = defaultBackgroundColor;
 
   changeGithubImage(defaultBackgroundColor);
-});
+};
+
+export default loadColor;

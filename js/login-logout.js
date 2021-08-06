@@ -80,7 +80,7 @@ const handleLogout = (e) => {
   window.addEventListener('keydown', escModalClose);
 };
 
-const handleLoad = () => {
+const loadUser = () => {
   const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     paintUserGreeting(localUsername);
@@ -93,4 +93,4 @@ const handleLoad = () => {
   }
 };
 
-window.addEventListener('load', handleLoad);
+export default loadUser;
