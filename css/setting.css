@@ -69,3 +69,7 @@
   outline: none;
   border: none;
 }
+
+.buttons {
+  align-self: center;
+}

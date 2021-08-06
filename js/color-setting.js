@@ -14,12 +14,26 @@ const settingMenu = setting.querySelector('.setting__menu');
 
 const fontSetting = settingMenu.querySelector('.setting--font');
 const backgroundSetting = settingMenu.querySelector('.setting--background');
-const settingSaveButton = settingMenu.querySelector('[type=submit]');
+const settingSaveButton = settingMenu.querySelector('.save-button');
+const settingResetButton = settingMenu.querySelector('.reset-button');
 
 const FONT_COLOR_KEY = 'font-color';
 const BACKGROUND_COLOR_KEY = 'background-color';
-let fontColor = localStorage.getItem(FONT_COLOR_KEY);
-let backgroundColor = localStorage.getItem(BACKGROUND_COLOR_KEY);
+
+const backgroundColorArray = [
+  '#9a515c',
+  '#3c6844',
+  '#ae6d24',
+  '#4f6f44',
+  '#446f6c',
+  '#6a677e',
+  '#7d647c',
+];
+const randomNumber = Math.floor(Math.random() * backgroundColorArray.length);
+let fontColor = localStorage.getItem(FONT_COLOR_KEY) || '#DEDEDE';
+let backgroundColor =
+  localStorage.getItem(BACKGROUND_COLOR_KEY) ||
+  backgroundColorArray[randomNumber];
 
 const storeFontColor = (e) => {
   fontColor = e.target.value;
@@ -40,9 +54,19 @@ const saveSetting = (e) => {
   settingMenu.classList.add(DELETED_CLASS);
 };
 
+const resetSetting = (e) => {
+  e.preventDefault();
+  localStorage.removeItem(FONT_COLOR_KEY);
+  localStorage.removeItem(BACKGROUND_COLOR_KEY);
+
+  settingMenu.classList.add(DELETED_CLASS);
+  body.style.backgroundColor = backgroundColorArray[randomNumber];
+};
+
 fontSetting.addEventListener('input', storeFontColor);
 backgroundSetting.addEventListener('input', storeBackgroundColor);
 settingSaveButton.addEventListener('click', saveSetting);
+settingResetButton.addEventListener('click', resetSetting);
 
 setting.addEventListener('mouseenter', () => {
   handleSettingMouseEnter(settingIcon);
@@ -59,19 +83,16 @@ window.addEventListener('click', (e) => {
 });
 
 const loadColor = () => {
-  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#DEDEDE';
-  const defaultBackgroundColor =
-    localStorage.getItem(BACKGROUND_COLOR_KEY) || '#3c6844';
   const fontInputArea = fontSetting.querySelector('input');
   const backgroundInputArea = backgroundSetting.querySelector('input');
 
-  body.style.color = defaultFontColor;
-  body.style.backgroundColor = defaultBackgroundColor;
+  body.style.color = fontColor;
+  body.style.backgroundColor = backgroundColor;
 
-  fontInputArea.value = defaultFontColor;
-  backgroundInputArea.value = defaultBackgroundColor;
+  fontInputArea.value = fontColor;
+  backgroundInputArea.value = backgroundColor;
 
-  changeGithubImage(defaultBackgroundColor);
+  changeGithubImage(backgroundColor);
 };
 
 export default loadColor;
