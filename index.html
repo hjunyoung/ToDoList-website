@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My ToDoList</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1982bf9b4f.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <section class="content">
@@ -253,6 +257,37 @@
         </form>
       </section>
 
+      <section class="game">
+        <h3>Rock Scissors Paper</h3>
+        <section class="game__items">
+          <div class="game__item">✊🏼</div>
+          <div class="game__item">✌🏼</div>
+          <div class="game__item">🖐🏼</div>
+        </section>
+        <section class="game__result">
+          <section class="choice__result">
+            <div class="user-result">
+              <p>Your<br />choice</p>
+              <div class="user-item"></div>
+            </div>
+            <div class="computer-result">
+              <p>Computer<br />choice</p>
+              <div class="computer-item"></div>
+            </div>
+          </section>
+          <div class="result-message-container">
+            <p class="result-message-title">Result</p>
+            <p class="result-message"></p>
+          </div>
+
+          <div class="game__refresh">
+            <span>
+              <i class="fas fa-redo-alt"></i>
+            </span>
+          </div>
+        </section>
+      </section>
+
       <section class="github">
         <a href="https://github.com/hjunyoung/ToDoList-website" target="_blank">
           <img src="img/GitHub-Mark-Light-120px-plus.png" alt="" />
@@ -268,8 +303,9 @@
     <script src="js/clock.js" type="module"></script>
     <script src="js/login-logout.js" type="module"></script>
     <script src="js/weather.js" type="module"></script>
-    <script src="js/calendar.js"></script>
+    <script src="js/calendar.js" type="module"></script>
     <script src="js/todo.js" type="module"></script>
+    <script src="js/game.js"></script>
     <script src="js/app.js" type="module"></script>
   </body>
 </html>

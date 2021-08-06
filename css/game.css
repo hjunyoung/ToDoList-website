@@ -1,0 +1,114 @@
+.game {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.game > * {
+  /* border: 1px solid black; */
+  width: 90%;
+}
+
+.game > h3 {
+  margin-top: 6%;
+  text-align: center;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3),
+    -2px -2px 4px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  height: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__items {
+  display: flex;
+  justify-content: space-around;
+}
+.game__item {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
+    -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+.game__item:active {
+  box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
+    inset -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+.game__result {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game__result p {
+  text-align: center;
+}
+
+.choice__result {
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+
+.user-result,
+.computer-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  width: 45%;
+}
+.user-result div,
+.computer-result div {
+  font-size: 2em;
+}
+
+.user-item,
+.computer-item {
+  height: 60%;
+}
+
+.result-message-container {
+  width: 90%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.3),
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+.result-message {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8em;
+}
+
+.game__refresh > span {
+  opacity: 0.7;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1rem;
+}
