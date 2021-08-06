@@ -238,12 +238,6 @@ const handleTodoSubmit = (e) => {
   todoInput.value = '';
 };
 
-(function inintialLoad() {
-  const localUsername = localStorage.getItem(USERNAME_KEY);
-  if (localUsername) {
-    loadTodo();
-    todo.classList.remove(DELETED_CLASS);
-  }
-})();
-
 todoForm.addEventListener('submit', handleTodoSubmit);
+
+export default loadTodo;

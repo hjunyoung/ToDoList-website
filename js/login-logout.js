@@ -1,5 +1,6 @@
 import { closeModal, escModalClose, handleLogoutModal } from './modal.js';
 import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
+import loadTodo from './todo.js';
 
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
@@ -80,12 +81,28 @@ const handleLogout = (e) => {
   window.addEventListener('keydown', escModalClose);
 };
 
+const showContainers = () => {
+  const setting = document.querySelector('.setting');
+  const weather = document.querySelector('.weather');
+  const weatherForecast = document.querySelector('.weather-forecast');
+  const todo = document.querySelector('.todo');
+  const game = document.querySelector('.game');
+
+  setting.classList.remove(DELETED_CLASS);
+  weather.classList.remove(DELETED_CLASS);
+  weatherForecast.classList.remove(DELETED_CLASS);
+  todo.classList.remove(DELETED_CLASS);
+  game.classList.remove(DELETED_CLASS);
+  loadTodo();
+};
+
 const loadUser = () => {
   const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     paintUserGreeting(localUsername);
     setInterval(paintUserGreeting, 1000, localUsername);
     logoutButton.addEventListener('click', handleLogout);
+    showContainers();
   } else {
     loginContainer.classList.remove(DELETED_CLASS);
     loginForm.addEventListener('submit', handleLoginSubmit);
