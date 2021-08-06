@@ -1,3 +1,5 @@
+import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
+
 const todo = document.querySelector('.todo');
 const todoForm = todo.querySelector('.todo__form');
 const todoInput = document.querySelector('#todo__form__input');
@@ -184,7 +186,7 @@ const paintTodoList = (typedTodo) => {
 
   const inputTime = document.createElement('p');
   inputTime.innerText = typedTodo.inputTime;
-  inputTime.classList.add('input-time', 'deleted');
+  inputTime.classList.add('input-time', DELETED_CLASS);
   todoItem.appendChild(inputTime);
 
   if (typedTodo.checked) {
@@ -237,10 +239,10 @@ const handleTodoSubmit = (e) => {
 };
 
 (function inintialLoad() {
-  const localUsername = localStorage.getItem('username');
+  const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     loadTodo();
-    todo.classList.remove('deleted');
+    todo.classList.remove(DELETED_CLASS);
   }
 })();
 

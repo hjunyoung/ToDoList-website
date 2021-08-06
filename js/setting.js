@@ -1,5 +1,7 @@
+import { DELETED_CLASS } from './const-variable.js';
+
 export const retainSettingMenu = (settingTarget, opacityTarget) => {
-  if (settingTarget.classList.contains('deleted')) {
+  if (settingTarget.classList.contains(DELETED_CLASS)) {
     opacityTarget.style.opacity = 0.4;
   } else {
     opacityTarget.style.opacity = 1;
@@ -11,7 +13,7 @@ export const handleSettingMouseEnter = (opacityTarget) => {
 export const handleSettingBlur = (e, settingTarget, opacityTarget) => {
   const { target } = e;
   if (!settingTarget.contains(target)) {
-    settingTarget.classList.add('deleted');
+    settingTarget.classList.add(DELETED_CLASS);
     retainSettingMenu(settingTarget, opacityTarget);
   }
 };
@@ -20,5 +22,5 @@ export const handleSettingMouseLeave = (settingTarget, opacityTarget) => {
 };
 export const handleSettingClick = (e, settingTarget) => {
   e.stopPropagation();
-  settingTarget.classList.toggle('deleted');
+  settingTarget.classList.toggle(DELETED_CLASS);
 };

@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+import { DELETED_CLASS } from './const-variable.js';
+
 const clearModal = () => {
   const modalMessage = document.querySelector('.modal p');
   modalMessage.remove();
@@ -12,7 +13,7 @@ const clearModal = () => {
 export const closeModal = (e) => {
   e.preventDefault();
   const targetModal = e.target.parentNode.parentNode.parentNode;
-  targetModal.classList.add('deleted');
+  targetModal.classList.add(DELETED_CLASS);
 
   clearModal();
 };
@@ -20,7 +21,7 @@ export const closeModal = (e) => {
 export const escModalClose = (e) => {
   if (e.key === 'Escape') {
     const targetModal = document.querySelector('.modal');
-    targetModal.classList.add('deleted');
+    targetModal.classList.add(DELETED_CLASS);
     clearModal();
   }
 };
@@ -32,8 +33,8 @@ export const handleLogoutModal = (e) => {
   const todo = document.querySelector('.todo');
 
   window.location.reload();
-  loginContainer.classList.remove('deleted');
-  todo.classList.add('deleted');
-  greeting.classList.add('deleted');
+  loginContainer.classList.remove(DELETED_CLASS);
+  todo.classList.add(DELETED_CLASS);
+  greeting.classList.add(DELETED_CLASS);
   localStorage.clear();
 };

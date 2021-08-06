@@ -1,5 +1,6 @@
 import API_KEY from './api-key.js';
 import { closeModal, escModalClose } from './modal.js';
+import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
 
 const getCurrentWeather = (url) => {
   fetch(url)
@@ -116,7 +117,7 @@ const handleGeoSuccess = (GeolocationPosition) => {
 
 const handleGeoFail = () => {
   const geoModal = document.querySelector('.modal');
-  geoModal.classList.remove('deleted');
+  geoModal.classList.remove(DELETED_CLASS);
 
   const modalContent = document.querySelector('.modal__content');
   const buttonArea = document.querySelector('.modal__button');
@@ -133,7 +134,7 @@ const handleGeoFail = () => {
 };
 
 const handleLoadWeather = () => {
-  const localUsername = localStorage.getItem('username');
+  const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
   }

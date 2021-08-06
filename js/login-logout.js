@@ -1,4 +1,5 @@
 import { closeModal, escModalClose, handleLogoutModal } from './modal.js';
+import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
 
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
@@ -6,9 +7,6 @@ const loginInput = loginForm.querySelector('#login__form__input');
 const greeting = document.querySelector('.greeting');
 const userGreeting = greeting.querySelector('.greeting__user');
 const logoutButton = greeting.querySelector('.logout');
-
-const DELETED_CLASS = 'deleted';
-const USERNAME_KEY = 'username';
 
 const determineGreeting = () => {
   let greetingMessage;
@@ -57,7 +55,7 @@ const handleKeyDownSubmit = () => {
 const handleLogout = (e) => {
   e.preventDefault();
   const logoutModal = document.querySelector('.modal');
-  logoutModal.classList.remove('deleted');
+  logoutModal.classList.remove(DELETED_CLASS);
 
   const modalContent = document.querySelector('.modal__content');
   const buttonArea = document.querySelector('.modal__button');

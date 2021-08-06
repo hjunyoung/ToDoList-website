@@ -5,6 +5,7 @@ import {
   handleSettingMouseLeave,
   handleSettingBlur,
 } from './setting.js';
+import { DELETED_CLASS } from './const-variable.js';
 
 const { body } = document;
 const setting = document.querySelector('.setting');
@@ -36,7 +37,7 @@ const saveSetting = (e) => {
   localStorage.setItem(FONT_COLOR_KEY, fontColor);
   localStorage.setItem(BACKGROUND_COLOR_KEY, backgroundColor);
 
-  settingMenu.classList.add('deleted');
+  settingMenu.classList.add(DELETED_CLASS);
 };
 
 fontSetting.addEventListener('input', storeFontColor);
