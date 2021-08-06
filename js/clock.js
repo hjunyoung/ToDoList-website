@@ -1,14 +1,21 @@
-const clockContainer = document.querySelector(".clock");
-const clock = clockContainer.querySelector(".clock h1");
+import {
+  handleSettingClick,
+  handleSettingMouseEnter,
+  handleSettingMouseLeave,
+  handleSettingBlur,
+} from './setting.js';
 
-const settingContainer = document.querySelector(".clock__setting");
-const settingButton = settingContainer.querySelector(".clock__setting span");
+const clockContainer = document.querySelector('.clock');
+const clock = clockContainer.querySelector('.clock h1');
 
-const toggleMenu = document.querySelector(".clock__setting-toggle");
-const toggleButton = toggleMenu.querySelector(".toggle-outer");
-const toggleIndex = toggleMenu.querySelector(".toggle-inner");
+const settingContainer = document.querySelector('.clock__setting');
+const settingButton = settingContainer.querySelector('.clock__setting span');
 
-const CLOCK_12HOUR_CLASS = "clock-12hour";
+const toggleMenu = document.querySelector('.clock__setting-toggle');
+const toggleButton = toggleMenu.querySelector('.toggle-outer');
+const toggleIndex = toggleMenu.querySelector('.toggle-inner');
+
+const CLOCK_12HOUR_CLASS = 'clock-12hour';
 
 const getTime = () => {
   const date = new Date();
@@ -18,41 +25,31 @@ const getTime = () => {
   }
   hours = String(hours);
   const minutes = String(date.getMinutes());
-  const time = `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
+  const time = `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
   clock.innerText = time;
 };
 
-const handleToggleClockMode = (e) => {
-  e.stopPropagation();
+const handleToggleClockMode = () => {
   clock.classList.toggle(CLOCK_12HOUR_CLASS);
-  toggleButton.classList.toggle("hour12-outer");
-  toggleIndex.classList.toggle("hour12-inner");
+  toggleButton.classList.toggle('hour12-outer');
+  toggleIndex.classList.toggle('hour12-inner');
   getTime();
 };
 
-const showClockMode = () => {
-  if (!toggleMenu.classList.contains("hidden")) {
-    settingContainer.style.opacity = "1";
-  } else {
-    settingContainer.style.opacity = "0";
-  }
-};
+clockContainer.addEventListener('mouseenter', () => {
+  handleSettingMouseEnter(settingContainer);
+});
+clockContainer.addEventListener('mouseleave', () => {
+  handleSettingMouseLeave(toggleMenu, settingContainer);
+});
+settingButton.addEventListener('click', (e) => {
+  handleSettingClick(e, toggleMenu);
+});
 
-const handleClockSettingClick = (e) => {
-  toggleMenu.classList.toggle("hidden");
-  showClockMode();
-};
-
-const handleMouseOverClock = (e) => {
-  settingContainer.style.opacity = "1";
-};
-const handleMouseLeaveClock = (e) => {
-  showClockMode();
-};
+toggleMenu.addEventListener('click', handleToggleClockMode);
+window.addEventListener('click', (e) => {
+  handleSettingBlur(e, toggleMenu, settingContainer);
+});
 
 getTime();
 setInterval(getTime, 1000);
-settingButton.addEventListener("click", handleClockSettingClick);
-clockContainer.addEventListener("mouseover", handleMouseOverClock);
-clockContainer.addEventListener("mouseleave", handleMouseLeaveClock);
-toggleMenu.addEventListener("click", handleToggleClockMode);

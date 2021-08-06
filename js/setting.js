@@ -1,77 +1,24 @@
-import changeGithubImage from './github-icon.js';
-
-const { body } = document;
-const setting = document.querySelector('.setting');
-const settingIcon = document.querySelector('.setting__icon');
-const settingMenu = setting.querySelector('.setting__menu');
-
-const fontSetting = settingMenu.querySelector('.setting--font');
-const backgroundSetting = settingMenu.querySelector('.setting--background');
-const settingSaveButton = settingMenu.querySelector('[type=submit]');
-
-const FONT_COLOR_KEY = 'font-color';
-const BACKGROUND_COLOR_KEY = 'background-color';
-let fontColor = localStorage.getItem(FONT_COLOR_KEY);
-let backgroundColor = localStorage.getItem(BACKGROUND_COLOR_KEY);
-
-const storeFontColor = (e) => {
-  fontColor = e.target.value;
-  body.style.color = fontColor;
-};
-
-const storeBackgroundColor = (e) => {
-  backgroundColor = e.target.value;
-  body.style.backgroundColor = backgroundColor;
-  changeGithubImage(backgroundColor);
-};
-
-const saveSetting = (e) => {
-  e.preventDefault();
-  localStorage.setItem(FONT_COLOR_KEY, fontColor);
-  localStorage.setItem(BACKGROUND_COLOR_KEY, backgroundColor);
-
-  settingMenu.classList.add('deleted');
-};
-
-fontSetting.addEventListener('input', storeFontColor);
-backgroundSetting.addEventListener('input', storeBackgroundColor);
-settingSaveButton.addEventListener('click', saveSetting);
-
-const retainSettingMenu = () => {
-  if (settingMenu.classList.contains('deleted')) {
-    settingIcon.style.opacity = 0.3;
+export const retainSettingMenu = (settingTarget, opacityTarget) => {
+  if (settingTarget.classList.contains('deleted')) {
+    opacityTarget.style.opacity = 0.4;
   } else {
-    settingIcon.style.opacity = 1;
+    opacityTarget.style.opacity = 1;
   }
 };
-
-const handleSettingMouseEnter = () => {
-  settingIcon.style.opacity = 1;
+export const handleSettingMouseEnter = (opacityTarget) => {
+  opacityTarget.style.opacity = 1;
 };
-const handleSettingMouseLeave = () => {
-  retainSettingMenu();
+export const handleSettingBlur = (e, settingTarget, opacityTarget) => {
+  const { target } = e;
+  if (!settingTarget.contains(target)) {
+    settingTarget.classList.add('deleted');
+    retainSettingMenu(settingTarget, opacityTarget);
+  }
 };
-
-const handleSettingClick = () => {
-  settingMenu.classList.toggle('deleted');
+export const handleSettingMouseLeave = (settingTarget, opacityTarget) => {
+  retainSettingMenu(settingTarget, opacityTarget);
 };
-
-setting.addEventListener('mouseenter', handleSettingMouseEnter);
-setting.addEventListener('mouseleave', handleSettingMouseLeave);
-settingIcon.addEventListener('click', handleSettingClick);
-
-window.addEventListener('load', () => {
-  const defaultFontColor = localStorage.getItem(FONT_COLOR_KEY) || '#DEDEDE';
-  const defaultBackgroundColor =
-    localStorage.getItem(BACKGROUND_COLOR_KEY) || '#3c6844';
-  const fontInputArea = fontSetting.querySelector('input');
-  const backgroundInputArea = backgroundSetting.querySelector('input');
-
-  body.style.color = defaultFontColor;
-  body.style.backgroundColor = defaultBackgroundColor;
-
-  fontInputArea.value = defaultFontColor;
-  backgroundInputArea.value = defaultBackgroundColor;
-
-  changeGithubImage(defaultBackgroundColor);
-});
+export const handleSettingClick = (e, settingTarget) => {
+  e.stopPropagation();
+  settingTarget.classList.toggle('deleted');
+};
