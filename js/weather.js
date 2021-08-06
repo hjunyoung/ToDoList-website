@@ -1,4 +1,5 @@
 import API_KEY from './api-key.js';
+import { closeModal, escModalClose } from './modal.js';
 
 const getCurrentWeather = (url) => {
   fetch(url)
@@ -128,11 +129,11 @@ const handleGeoFail = () => {
 
   modalContent.appendChild(failMessage);
   buttonArea.appendChild(closeButton);
-  window.addEventListener('keydown', ecsModalClose);
+  window.addEventListener('keydown', escModalClose);
 };
 
-const handleLoadWeather = (e) => {
-  let localUsername = localStorage.getItem(USERNAME_KEY);
+const handleLoadWeather = () => {
+  const localUsername = localStorage.getItem('username');
   if (localUsername) {
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoFail);
   }

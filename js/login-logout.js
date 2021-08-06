@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-const content = document.querySelector('.content');
+import { closeModal, escModalClose, handleLogoutModal } from './modal.js';
 
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
@@ -12,19 +11,19 @@ const DELETED_CLASS = 'deleted';
 const USERNAME_KEY = 'username';
 
 const determineGreeting = () => {
-  let greeting;
+  let greetingMessage;
   const hour = new Date().getHours();
 
   if (hour >= 5 && hour < 12) {
-    greeting = 'Good morning';
+    greetingMessage = 'Good morning';
   } else if (hour >= 12 && hour < 18) {
-    greeting = 'Good afternoon';
+    greetingMessage = 'Good afternoon';
   } else if (hour >= 18 && hour < 24) {
-    greeting = 'Good evening';
+    greetingMessage = 'Good evening';
   } else {
-    greeting = 'Sleep tight';
+    greetingMessage = 'Sleep tight';
   }
-  return greeting;
+  return greetingMessage;
 };
 
 const paintUserGreeting = (username) => {
@@ -80,11 +79,11 @@ const handleLogout = (e) => {
 
   yesButton.addEventListener('click', handleLogoutModal);
   noButton.addEventListener('click', closeModal);
-  window.addEventListener('keydown', ecsModalClose);
+  window.addEventListener('keydown', escModalClose);
 };
 
-const handleLoad = (e) => {
-  let localUsername = localStorage.getItem(USERNAME_KEY);
+const handleLoad = () => {
+  const localUsername = localStorage.getItem(USERNAME_KEY);
   if (localUsername) {
     paintUserGreeting(localUsername);
     setInterval(paintUserGreeting, 1000, localUsername);

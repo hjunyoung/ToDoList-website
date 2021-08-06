@@ -9,7 +9,7 @@ const clearModal = () => {
   }
 };
 
-const closeModal = (e) => {
+export const closeModal = (e) => {
   e.preventDefault();
   const targetModal = e.target.parentNode.parentNode.parentNode;
   targetModal.classList.add('deleted');
@@ -17,7 +17,7 @@ const closeModal = (e) => {
   clearModal();
 };
 
-const ecsModalClose = (e) => {
+export const escModalClose = (e) => {
   if (e.key === 'Escape') {
     const targetModal = document.querySelector('.modal');
     targetModal.classList.add('deleted');
@@ -25,7 +25,7 @@ const ecsModalClose = (e) => {
   }
 };
 
-const handleLogoutModal = (e) => {
+export const handleLogoutModal = (e) => {
   e.preventDefault();
   const loginContainer = document.querySelector('.login');
   const greeting = document.querySelector('.greeting');
