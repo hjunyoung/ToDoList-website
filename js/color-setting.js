@@ -9,7 +9,6 @@ import { DELETED_CLASS } from './const-variable.js';
 
 const { body } = document;
 const setting = document.querySelector('.setting');
-const settingIcon = document.querySelector('.setting__icon');
 const settingMenu = setting.querySelector('.setting__menu');
 
 const fontSetting = settingMenu.querySelector('.setting--font');
@@ -69,17 +68,18 @@ settingSaveButton.addEventListener('click', saveSetting);
 settingResetButton.addEventListener('click', resetSetting);
 
 setting.addEventListener('mouseenter', () => {
-  handleSettingMouseEnter(settingIcon);
+  handleSettingMouseEnter(setting);
 });
 setting.addEventListener('mouseleave', () => {
-  handleSettingMouseLeave(settingMenu, settingIcon);
+  handleSettingMouseLeave(settingMenu, setting);
 });
-settingIcon.addEventListener('click', (e) => {
-  handleSettingClick(e, settingMenu);
+setting.addEventListener('click', (e) => {
+  e.stopPropagation();
+  handleSettingClick(settingMenu);
 });
 
 window.addEventListener('click', (e) => {
-  handleSettingBlur(e, settingMenu, settingIcon);
+  handleSettingBlur(e, settingMenu, setting);
 });
 
 const loadColor = () => {
@@ -95,4 +95,4 @@ const loadColor = () => {
   changeGithubImage(backgroundColor);
 };
 
-export default loadColor;
+export { loadColor, settingMenu };

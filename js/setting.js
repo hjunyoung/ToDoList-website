@@ -1,3 +1,5 @@
+import { toggleMenu } from './clock.js';
+import { settingMenu } from './color-setting.js';
 import { DELETED_CLASS } from './const-variable.js';
 
 export const retainSettingMenu = (settingTarget, opacityTarget) => {
@@ -12,7 +14,10 @@ export const handleSettingMouseEnter = (opacityTarget) => {
 };
 export const handleSettingBlur = (e, settingTarget, opacityTarget) => {
   const { target } = e;
-  if (!settingTarget.contains(target)) {
+  if (
+    !settingTarget.classList.contains(DELETED_CLASS) &&
+    !settingTarget.contains(target)
+  ) {
     settingTarget.classList.add(DELETED_CLASS);
     retainSettingMenu(settingTarget, opacityTarget);
   }
@@ -20,7 +25,11 @@ export const handleSettingBlur = (e, settingTarget, opacityTarget) => {
 export const handleSettingMouseLeave = (settingTarget, opacityTarget) => {
   retainSettingMenu(settingTarget, opacityTarget);
 };
-export const handleSettingClick = (e, settingTarget) => {
-  e.stopPropagation();
+export const handleSettingClick = (settingTarget) => {
+  if (settingTarget !== toggleMenu) {
+    toggleMenu.classList.add(DELETED_CLASS);
+  } else if (settingTarget !== settingMenu) {
+    settingMenu.classList.add(DELETED_CLASS);
+  }
   settingTarget.classList.toggle(DELETED_CLASS);
 };

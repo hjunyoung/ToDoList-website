@@ -11,7 +11,7 @@ const clock = clockContainer.querySelector('.clock h1');
 const settingContainer = document.querySelector('.clock__setting');
 const settingButton = settingContainer.querySelector('.clock__setting span');
 
-const toggleMenu = document.querySelector('.clock__setting-toggle');
+const toggleMenu = document.querySelector('.clock__toggle');
 const toggleButton = toggleMenu.querySelector('.toggle-outer');
 const toggleIndex = toggleMenu.querySelector('.toggle-inner');
 
@@ -43,7 +43,8 @@ clockContainer.addEventListener('mouseleave', () => {
   handleSettingMouseLeave(toggleMenu, settingContainer);
 });
 settingButton.addEventListener('click', (e) => {
-  handleSettingClick(e, toggleMenu);
+  e.stopPropagation();
+  handleSettingClick(toggleMenu);
 });
 
 toggleMenu.addEventListener('click', handleToggleClockMode);
@@ -51,4 +52,4 @@ window.addEventListener('click', (e) => {
   handleSettingBlur(e, toggleMenu, settingContainer);
 });
 
-export default getTime;
+export { getTime, toggleMenu };
