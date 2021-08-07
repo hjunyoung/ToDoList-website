@@ -4,12 +4,61 @@
   position: relative;
 }
 
-.logout {
+.greeting__setting {
   position: absolute;
-  right: 1vw;
-  bottom: 1vh;
-  display: none;
+  top: 3%;
+  right: 0.9%;
 }
-.greeting:hover .logout {
-  display: block;
+
+.greeting__setting > p {
+  font-size: 0.7em;
+  opacity: 0.4;
+  font-weight: normal;
+  user-select: none;
+  cursor: pointer;
+}
+
+.greeting__setting-menu {
+  position: absolute;
+  background-color: #0c150e;
+  border-radius: 10px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
+  padding: 5px;
+  top: 30px;
+  right: -46%;
+}
+
+.greeting__setting-menu input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 48%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.greeting__setting-menu input:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+.greeting__setting-menu input:active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+.greeting__setting-menu::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: -4px;
+  right: 13%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  z-index: -1;
+  background-color: #0c150e;
 }

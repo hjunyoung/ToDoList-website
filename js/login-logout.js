@@ -1,11 +1,11 @@
 import { closeModal, escModalClose, handleLogoutModal } from './modal.js';
 import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
 import loadTodo from './todo.js';
+import { greeting } from './greeting.js';
 
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
 const loginInput = loginForm.querySelector('#login__form__input');
-const greeting = document.querySelector('.greeting');
 const userGreeting = greeting.querySelector('.greeting__user');
 const logoutButton = greeting.querySelector('.logout');
 
