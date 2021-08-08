@@ -8,10 +8,20 @@ const loginForm = loginContainer.querySelector('.login__form');
 const loginInput = loginForm.querySelector('.login__input');
 const userGreeting = greeting.querySelector('.greeting__user');
 const logoutButton = greeting.querySelector('.logout');
+let greetingMessage;
 
-const determineGreeting = () => {
-  let greetingMessage;
+const paintUserGreeting = (username) => {
+  const greetMessage = `${greetingMessage}, <span>${username}</span>`;
+  userGreeting.innerHTML = greetMessage;
+  loginForm.classList.add(DELETED_CLASS);
+  greeting.classList.remove(DELETED_CLASS);
+};
+
+const determineGreeting = (username) => {
   const hour = new Date().getHours();
+  const minute = new Date().getMinutes();
+  const second = new Date().getSeconds();
+  const hoursArray = [0, 5, 12, 18, 24];
 
   if (hour >= 5 && hour < 12) {
     greetingMessage = 'Good morning';
@@ -22,14 +32,10 @@ const determineGreeting = () => {
   } else {
     greetingMessage = 'Sleep tight';
   }
-  return greetingMessage;
-};
 
-const paintUserGreeting = (username) => {
-  const greetMessage = `${determineGreeting()}, ${username}`;
-  userGreeting.innerText = greetMessage;
-  loginForm.classList.add(DELETED_CLASS);
-  greeting.classList.remove(DELETED_CLASS);
+  if (hoursArray.includes(hour) && minute === 0 && second === 0) {
+    paintUserGreeting(username);
+  }
 };
 
 const handleLoginSubmit = (e) => {
@@ -105,8 +111,9 @@ const loadUser = () => {
   const calendar = document.querySelector('.calendar');
 
   if (localUsername) {
+    determineGreeting(localUsername);
     paintUserGreeting(localUsername);
-    setInterval(paintUserGreeting, 1000, localUsername);
+    setInterval(determineGreeting, 1000, localUsername);
     logoutButton.addEventListener('click', handleLogout);
     showContainers();
 
