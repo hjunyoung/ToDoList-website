@@ -95,6 +95,11 @@
 .todo__list-container li button {
   visibility: hidden;
 }
+
+.todo__list-container li:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .todo__list-container li:hover button {
   visibility: visible;
 }
@@ -110,10 +115,11 @@
   font-size: 0.8rem;
   padding: 4px;
   border-radius: 4px;
-  top: 50%;
-  right: 7%;
+  bottom: -20px;
+  right: 0;
   width: 130px;
   text-align: center;
+  z-index: 1;
 }
 
 .todo__list-container li:hover .input-time {

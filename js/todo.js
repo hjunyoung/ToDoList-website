@@ -1,4 +1,4 @@
-import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
+import { DELETED_CLASS } from './const-variable.js';
 
 const todo = document.querySelector('.todo');
 const todoForm = todo.querySelector('.todo__form');
@@ -41,6 +41,54 @@ const handleCheckTodo = (e) => {
     }
   }
   saveTodo();
+};
+
+const editUpdateTodoList = (editableContent) => {
+  const targetId = editableContent.parentNode.id;
+  const newValue = editableContent.textContent;
+
+  for (let i = 0; i < todoList.length; i++) {
+    if (Number(targetId) === todoList[i].id) {
+      todoList[i].todo = newValue;
+    }
+  }
+  saveTodo();
+};
+
+const editSaveTodo = (e, editableContent, dragDiv) => {
+  if (e.type === 'keydown' && (e.key === 'Escape' || e.key === 'Enter')) {
+    editableContent.setAttribute('contenteditable', false);
+  } else if (e.type === 'blur') {
+    editableContent.setAttribute('contenteditable', false);
+
+    editUpdateTodoList(editableContent);
+    dragDiv.setAttribute('draggable', true);
+    window.removeEventListener('keydown', editSaveTodo);
+  }
+};
+
+const addEditable = (e) => {
+  const editableContent = e.target;
+  editableContent.setAttribute('contenteditable', true);
+
+  const range = document.createRange();
+  const selection = window.getSelection();
+
+  range.setStart(editableContent, 1);
+  range.collapse(true);
+  selection.removeAllRanges();
+  selection.addRange(range);
+  editableContent.focus();
+
+  const listDiv = editableContent.parentNode.parentNode;
+  listDiv.setAttribute('draggable', false);
+
+  window.addEventListener('keydown', (event) => {
+    editSaveTodo(event, editableContent);
+  });
+  editableContent.addEventListener('blur', (event) => {
+    editSaveTodo(event, editableContent, listDiv);
+  });
 };
 
 const dragAndDropUpdateTodoList = (dragTarget, dropTarget) => {
@@ -107,6 +155,8 @@ function dragDrop(e) {
     dragAndDropUpdateTodoList(dragTarget, dropTarget);
     saveTodo();
   }
+  dragTarget.addEventListener('dblclick', addEditable);
+  dropTarget.addEventListener('dblclick', addEditable);
 
   this.classList.remove(DRAG_OVER_CLASS);
 }
@@ -118,45 +168,6 @@ const makeDraggable = (todoItemContainer) => {
   todoItemContainer.addEventListener('dragover', dragOver);
   todoItemContainer.addEventListener('dragleave', dragLeave);
   todoItemContainer.addEventListener('drop', dragDrop);
-};
-
-const editUpdateTodoList = (editableContent) => {
-  const targetId = editableContent.parentNode.id;
-  const newValue = editableContent.textContent;
-
-  for (let i = 0; i < todoList.length; i++) {
-    if (Number(targetId) === todoList[i].id) {
-      todoList[i].todo = newValue;
-    }
-  }
-  saveTodo();
-};
-
-const editSaveTodo = (e) => {
-  if (e.type === 'keydown' && (e.key === 'Escape' || e.key === 'Enter')) {
-    const editableContent = document.querySelector('[contenteditable=true]');
-    editableContent.removeAttribute('contenteditable');
-  } else if (e.type === 'blur') {
-    const editableContent = e.target;
-    editUpdateTodoList(editableContent);
-  }
-};
-
-const addEditable = (e) => {
-  const editableContent = e.target;
-  editableContent.setAttribute('contenteditable', true);
-
-  const range = document.createRange();
-  const selection = window.getSelection();
-
-  range.setStart(editableContent, 1);
-  range.collapse(true);
-  selection.removeAllRanges();
-  selection.addRange(range);
-  editableContent.focus();
-
-  window.addEventListener('keydown', editSaveTodo);
-  editableContent.addEventListener('blur', editSaveTodo);
 };
 
 const paintTodoList = (typedTodo) => {
