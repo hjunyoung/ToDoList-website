@@ -25,7 +25,7 @@
 
 .greeting__setting-menu {
   position: absolute;
-  background-color: #0c150e;
+  background-color: var(--menu-background-color);
   border-radius: 10px;
   width: 100px;
   display: flex;
@@ -42,7 +42,7 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: var(--button-border);
   border-radius: 5px;
   height: 48%;
 }
@@ -65,5 +65,5 @@
   transform: rotateZ(45deg);
   position: absolute;
   z-index: -1;
-  background-color: #0c150e;
+  background-color: var(--menu-background-color);
 }

@@ -47,7 +47,7 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: var(--button-border);
   border-radius: 6px;
   padding: 3px 5px;
   margin: 2px;

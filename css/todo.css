@@ -27,7 +27,7 @@
   width: 98%;
   font-size: 1.6rem;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;

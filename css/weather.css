@@ -1,7 +1,7 @@
 .weather__city {
   width: 90%;
   height: 20%;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
     -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
   display: flex;
@@ -25,7 +25,7 @@
 }
 
 .weather__description > * {
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.3),
     inset -4px -4px 8px 0 rgba(255, 255, 255, 0.2);
   width: 31%;
@@ -62,7 +62,7 @@
   height: 90%;
   box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.3),
     inset -1px -1px 2px 0 rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   width: 13%;
 }
 

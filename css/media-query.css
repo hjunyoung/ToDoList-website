@@ -15,7 +15,7 @@
   }
 
   .clock__toggle {
-    left: -550%;
+    left: -122px;
   }
   .clock__toggle::after {
     left: 80%;
@@ -35,13 +35,36 @@
   .calendar {
     grid-area: 7 / 1 / span 5 / 2;
   }
+  .calendar__content {
+    height: 60%;
+    margin-bottom: 20%;
+  }
   .weather {
     grid-area: 12 / 1 / -1 / 2;
+  }
+  .weather__icon {
+    width: 50%;
+  }
+  .clock__toggle {
+    left: -5px;
+  }
+  .clock__toggle::after {
+    left: 7%;
   }
   .clock h1 {
     font-size: clamp(40px, 16vh, 130px);
   }
 }
+
+@media screen and (max-width: 1220px) and (max-height: 680px) {
+  .clock__toggle {
+    left: -122px;
+  }
+  .clock__toggle::after {
+    left: 80%;
+  }
+}
+
 @media screen and (min-width: 925px) and (max-height: 450px) {
   .weather-forecast {
     display: none;
@@ -75,19 +98,19 @@
     font-weight: bold;
     position: absolute;
     right: 60px;
-    width: 240px;
   }
 
   .weather__city {
-    width: 160px;
+    width: 200px;
     height: 100%;
   }
 
   .weather__description {
-    width: 80px;
+    width: 100px;
     height: 100%;
     flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: space-between;
+    position: relative;
   }
 
   .weather__description--icon {
@@ -96,6 +119,8 @@
 
   .weather__description--icon p {
     opacity: 0.8;
+    position: absolute;
+    top: 20px;
   }
   .weather__icon {
     width: 40px;
@@ -104,6 +129,12 @@
   .clock {
     grid-area: 12 / 1 / -1 / 2;
     width: 100%;
+  }
+  .clock__toggle {
+    left: -5px;
+  }
+  .clock__toggle::after {
+    left: 7%;
   }
   .clock h1 {
     font-size: clamp(40px, 16vh, 130px);
@@ -154,19 +185,19 @@
     font-weight: bold;
     position: absolute;
     right: 60px;
-    width: 240px;
   }
 
   .weather__city {
-    width: 160px;
+    width: 180px;
     height: 100%;
   }
 
   .weather__description {
-    width: 80px;
+    width: 90px;
     height: 100%;
     flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: space-between;
+    position: relative;
   }
 
   .weather__description--icon {
@@ -175,6 +206,8 @@
 
   .weather__description--icon p {
     opacity: 0.8;
+    position: absolute;
+    top: 20px;
   }
   .weather__icon {
     width: 40px;
@@ -256,6 +289,10 @@
 @media screen and (max-width: 600px) {
   .greeting {
     grid-area: 2 / 1 / 4 / -1;
+  }
+
+  .weather__city {
+    display: none;
   }
 
   .calendar {

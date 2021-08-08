@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
 @import url(reset.css);
+@import url(root.css);
 @import url(clock.css);
 @import url(greeting.css);
 @import url(todo.css);
@@ -31,8 +32,4 @@ body {
 
 .deleted {
   display: none;
-}
-
-.transparent {
-  opacity: 0;
 }
