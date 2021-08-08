@@ -52,6 +52,7 @@
   display: flex;
   font-size: 1rem;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .day-later {
@@ -116,4 +117,18 @@
 
 .day-later .icon {
   user-select: none;
+}
+
+.no-weather-message {
+  font-size: 1rem;
+}
+
+.cloud-icon {
+  color: #dedede;
+  font-size: 10rem;
+}
+
+.cloud-icon:active span {
+  opacity: 0.3;
+  cursor: pointer;
 }

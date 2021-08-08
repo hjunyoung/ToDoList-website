@@ -126,6 +126,10 @@
     width: 40px;
   }
 
+  .no-weather-message {
+    display: none;
+  }
+
   .clock {
     grid-area: 12 / 1 / -1 / 2;
     width: 100%;
@@ -211,6 +215,10 @@
   }
   .weather__icon {
     width: 40px;
+  }
+
+  .no-weather-message {
+    display: none;
   }
 
   .todo {

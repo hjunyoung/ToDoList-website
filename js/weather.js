@@ -1,5 +1,4 @@
 import API_KEY from './api-key.js';
-import { closeModal, escModalClose } from './modal.js';
 import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
 
 const getCurrentWeather = (url) => {
@@ -122,21 +121,26 @@ const handleGeoSuccess = (GeolocationPosition) => {
 };
 
 const handleGeoFail = () => {
-  const geoModal = document.querySelector('.modal');
-  geoModal.classList.remove(DELETED_CLASS);
+  const messageContainer = document.querySelector('.weather');
+  const cloudIcon = document.querySelector('.weather-forecast');
+  const weather = document.querySelectorAll('.weather > *');
+  const forecast = document.querySelectorAll('.day-later');
+  for (let i = 0; i < weather.length; i++) {
+    weather[i].classList.add(DELETED_CLASS);
+  }
+  for (let i = 0; i < forecast.length; i++) {
+    forecast[i].classList.add(DELETED_CLASS);
+  }
 
-  const modalContent = document.querySelector('.modal__content');
-  const buttonArea = document.querySelector('.modal__button');
+  const cloud = document.createElement('p');
+  cloud.innerHTML = `<span><i class="fas fa-cloud"></i>`;
+  cloud.classList.add('cloud-icon');
+  cloudIcon.appendChild(cloud);
+
   const failMessage = document.createElement('p');
-  const closeButton = document.createElement('input');
+  failMessage.className = 'no-weather-message';
   failMessage.innerText = "Can't find you. No weather for you.";
-  closeButton.type = 'submit';
-  closeButton.value = 'Okay';
-  closeButton.addEventListener('click', closeModal);
-
-  modalContent.appendChild(failMessage);
-  buttonArea.appendChild(closeButton);
-  window.addEventListener('keydown', escModalClose);
+  messageContainer.appendChild(failMessage);
 };
 
 const loadWeather = () => {
