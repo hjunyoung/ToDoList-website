@@ -126,9 +126,9 @@
 .cloud-icon {
   color: #dedede;
   font-size: 10rem;
+  cursor: pointer;
 }
 
 .cloud-icon:active span {
   opacity: 0.3;
-  cursor: pointer;
 }
