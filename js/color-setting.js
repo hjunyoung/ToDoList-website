@@ -46,7 +46,7 @@ const storeBackgroundColor = (e) => {
 };
 
 const saveSetting = (e) => {
-  e.preventDefault();
+  e.stopPropagation();
   localStorage.setItem(FONT_COLOR_KEY, fontColor);
   localStorage.setItem(BACKGROUND_COLOR_KEY, backgroundColor);
 
@@ -55,6 +55,7 @@ const saveSetting = (e) => {
 
 const resetSetting = (e) => {
   e.preventDefault();
+  const backgroundInputArea = backgroundSetting.querySelector('input');
 
   let resetRandomNumber;
   do {
@@ -66,11 +67,18 @@ const resetSetting = (e) => {
 
   settingMenu.classList.add(DELETED_CLASS);
   backgroundColor = backgroundColorArray[resetRandomNumber];
+  backgroundInputArea.value = backgroundColor;
   body.style.backgroundColor = backgroundColor;
 };
 
 fontSetting.addEventListener('input', storeFontColor);
+fontSetting.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
 backgroundSetting.addEventListener('input', storeBackgroundColor);
+backgroundSetting.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
 settingSaveButton.addEventListener('click', saveSetting);
 settingResetButton.addEventListener('click', resetSetting);
 
