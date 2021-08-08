@@ -1,5 +1,5 @@
-import API_KEY from './api-key.js';
 import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
+const API_KEY = 'baf8c41ff8fbca45a38043c02d41f560';
 
 const getCurrentWeather = (url) => {
   fetch(url)
