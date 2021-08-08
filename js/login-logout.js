@@ -1,11 +1,11 @@
 import { closeModal, escModalClose, handleLogoutModal } from './modal.js';
 import { DELETED_CLASS, USERNAME_KEY } from './const-variable.js';
 import loadTodo from './todo.js';
-import { greeting } from './greeting.js';
+import { greeting, greetingSettingMenu } from './greeting.js';
 
 const loginContainer = document.querySelector('.login');
 const loginForm = loginContainer.querySelector('.login__form');
-const loginInput = loginForm.querySelector('#login__form__input');
+const loginInput = loginForm.querySelector('.login__input');
 const userGreeting = greeting.querySelector('.greeting__user');
 const logoutButton = greeting.querySelector('.logout');
 
@@ -56,6 +56,7 @@ const handleKeyDownSubmit = () => {
 const handleLogout = (e) => {
   e.preventDefault();
   const logoutModal = document.querySelector('.modal');
+  greetingSettingMenu.classList.add(DELETED_CLASS);
   logoutModal.classList.remove(DELETED_CLASS);
 
   const modalContent = document.querySelector('.modal__content');
@@ -98,15 +99,32 @@ const showContainers = () => {
 
 const loadUser = () => {
   const localUsername = localStorage.getItem(USERNAME_KEY);
+  const content = document.querySelector('.content');
+  const githubIcon = document.querySelector('.github');
+  const clock = document.querySelector('.clock');
+  const calendar = document.querySelector('.calendar');
+
   if (localUsername) {
     paintUserGreeting(localUsername);
     setInterval(paintUserGreeting, 1000, localUsername);
     logoutButton.addEventListener('click', handleLogout);
     showContainers();
+
+    // remove logout class
+    content.classList.remove('content-logout');
+    githubIcon.classList.remove('github-logout');
+    clock.classList.remove('clock-logout');
+    calendar.classList.remove('calendar-logout');
   } else {
     loginContainer.classList.remove(DELETED_CLASS);
     loginForm.addEventListener('submit', handleLoginSubmit);
     loginForm.addEventListener('keydown', handleKeyDownSubmit);
+
+    //  add logout class
+    content.classList.add('content-logout');
+    githubIcon.classList.add('github-logout');
+    clock.classList.add('clock-logout');
+    calendar.classList.add('calendar-logout');
   }
 };
 

@@ -1,4 +1,5 @@
 import { DELETED_CLASS } from './const-variable.js';
+const modalBackground = document.querySelector('.modal__background-blur');
 
 const clearModal = () => {
   const modalMessage = document.querySelector('.modal p');
@@ -10,11 +11,16 @@ const clearModal = () => {
   }
 };
 
+const modalBackgroundClick = (e) => {
+  const modal = e.target.parentNode;
+  modal.classList.add(DELETED_CLASS);
+  clearModal();
+};
+
 export const closeModal = (e) => {
   e.preventDefault();
   const targetModal = e.target.parentNode.parentNode.parentNode;
   targetModal.classList.add(DELETED_CLASS);
-
   clearModal();
 };
 
@@ -38,3 +44,5 @@ export const handleLogoutModal = (e) => {
   greeting.classList.add(DELETED_CLASS);
   localStorage.clear();
 };
+
+modalBackground.addEventListener('click', modalBackgroundClick);

@@ -78,7 +78,7 @@ function dragStart(e) {
 function dragEnd() {
   this.classList.remove(DRAGGED_CLASS);
 
-  const draggable = document.querySelectorAll('[draggable=true');
+  const draggable = document.querySelectorAll('[draggable=true]');
   draggable.forEach((todoItem) => {
     const checkBox = todoItem.firstChild.firstChild;
     const deleteButton = todoItem.firstChild.childNodes[2];
@@ -92,6 +92,7 @@ function dragEnter(e) {
 }
 function dragOver(e) {
   e.preventDefault();
+  this.classList.add(DRAG_OVER_CLASS);
   e.dataTransfer.dropEffect = 'move';
 }
 function dragLeave() {

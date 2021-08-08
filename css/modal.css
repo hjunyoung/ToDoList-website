@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 30px;
+  padding: 20px 10px 10px 30px;
 }
 
 .modal__content {
@@ -41,7 +41,23 @@
 
 .modal__button input {
   width: 60px;
-  height: 30px;
-  font-size: 1em;
+  height: 35px;
+  font-size: 0.8em;
+  background: transparent;
+  border: none;
+  color: #fff;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  padding: 3px 5px;
+  margin: 2px;
+}
+
+.modal__button input:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+.modal__button input:active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
 }

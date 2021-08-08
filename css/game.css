@@ -4,11 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  user-select: none;
 }
 
 .game > * {
-  /* border: 1px solid black; */
   width: 90%;
 }
 
@@ -22,16 +20,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  font-size: max(20px, 1vw);
 }
 
 .game__items {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  height: 22%;
 }
+
+.items-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .game__item {
+  user-select: none;
   cursor: pointer;
-  width: 4rem;
-  height: 4rem;
+  width: clamp(60px, 4vw, 70px);
+  height: clamp(60px, 4vw, 70px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -46,10 +58,10 @@
 }
 
 .game__result {
-  height: 60%;
+  height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -58,11 +70,15 @@
 }
 
 .choice__result {
+  padding: 5px;
   height: 30%;
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  width: 90%;
   position: relative;
+  box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.3),
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
 }
 
 .user-result,
@@ -72,16 +88,23 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
-  width: 45%;
+  width: 50%;
+}
+.user-result {
+  border-right: 2px solid rgba(0, 0, 0, 0.15);
 }
 .user-result div,
 .computer-result div {
-  font-size: 2em;
+  font-size: clamp(30px, 3vw, 58px);
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-item,
 .computer-item {
-  height: 60%;
+  height: 70%;
 }
 
 .result-message-container {
@@ -102,6 +125,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.8em;
+  font-weight: bold;
 }
 
 .game__refresh > span {
@@ -111,4 +135,9 @@
   bottom: 10px;
   right: 10px;
   font-size: 1rem;
+}
+
+.game__refresh > span:hover {
+  transition: transform 1s linear;
+  transform: rotateZ(360deg);
 }

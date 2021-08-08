@@ -81,9 +81,15 @@ const getWeatherForecast = (url) => {
         const date = document.createElement('p');
         const day = document.createElement('p');
 
-        maxTemp.innerText = `${forecastData[i].temp.max.toFixed(1)}℃`;
-        minTemp.innerText = `${forecastData[i].temp.min.toFixed(1)}℃`;
-        rainVolumn.innerText = `${forecastData[i].rain || 0}mm/h`;
+        maxTemp.innerHTML = `${forecastData[i].temp.max.toFixed(
+          1
+        )}<span> ℃</span>`;
+        minTemp.innerHTML = `${forecastData[i].temp.min.toFixed(
+          1
+        )}<span> ℃</span>`;
+        rainVolumn.innerHTML = `${
+          forecastData[i].rain || 0
+        }<br><span>mm/h</span>`;
         weather.innerText = `${forecastData[i].weather[0].main}`;
         weatherIcon.src = `http://openweathermap.org/img/wn/${forecastData[i].weather[0].icon}.png`;
         today.setDate(today.getDate() + 1);

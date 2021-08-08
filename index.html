@@ -12,7 +12,7 @@
     ></script>
   </head>
   <body>
-    <section class="content">
+    <section class="content content-logout">
       <section class="modal deleted">
         <section class="modal__background-blur"></section>
         <section class="modal__window">
@@ -219,8 +219,8 @@
       </section>
 
       <section class="clock">
-        <div></div>
-        <h1>00:00</h1>
+        <div class="clock__icon deleted">⏰</div>
+        <h1></h1>
         <div class="clock__setting">
           <span>⚙</span>
           <section class="clock__toggle deleted">
@@ -234,24 +234,25 @@
 
       <section class="login deleted">
         <form action="" class="login__form">
-          <label for="login__form__input">
+          <label for="login__input">
             <p>What is your name?</p>
-            <input
-              type="text"
-              name="username"
-              id="login__form__input"
-              value=""
-              maxlenght="30"
-              autocomplete="off"
-              autofocus
-            />
           </label>
-          <input type="submit" value="Log In" />
+          <input
+            type="text"
+            name="username"
+            id="login__input"
+            class="login__input"
+            value=""
+            maxlenght="30"
+            autocomplete="off"
+            autofocus="true"
+          />
+          <input class="login__button" type="submit" value="Log In" />
         </form>
       </section>
 
       <section class="todo deleted">
-        <h2>My todo list</h2>
+        <h2>My todo list 📌</h2>
         <section class="todo__list-container">
           <ul class="todo__list-container__lists"></ul>
         </section>

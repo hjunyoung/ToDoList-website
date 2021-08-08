@@ -1,0 +1,75 @@
+.content {
+  overflow: hidden;
+  display: grid;
+  height: 100vh;
+  grid-template: 20px repeat(16, 1fr) / 2fr 2fr 1fr;
+  padding: 10px 20px 20px;
+  grid-gap: 20px 30px;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.content > * {
+  border-radius: 15px;
+  box-shadow: 7px 7px 14px 0 rgba(0, 0, 0, 0.3),
+    -7px -7px 14px 0 rgba(255, 255, 255, 0.2);
+}
+.setting {
+  box-shadow: none;
+}
+
+.greeting,
+.weather,
+.calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.greeting {
+  grid-area: 2 / 1 / 4 / 2;
+}
+
+.calendar {
+  grid-area: 4 / 1 / 6 / 2;
+  align-items: center;
+}
+
+.weather {
+  grid-area: 6 / 1 / 10 / 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.weather-forecast {
+  grid-area: 10 / 1 / -1 / 2;
+}
+
+.clock {
+  grid-area: 2 / 2 / 6 / -1;
+}
+
+.todo {
+  grid-area: 6 / 2 / -1 / 3;
+}
+
+.game {
+  grid-area: 6 / 3 / 17 / -1;
+}
+
+.github {
+  grid-area: 17 / 3 / 18 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  justify-self: flex-end;
+}
+
+.github img {
+  border-radius: 50%;
+  height: 30px;
+  cursor: pointer;
+}

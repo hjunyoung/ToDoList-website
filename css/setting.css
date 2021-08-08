@@ -2,33 +2,40 @@
   user-select: none;
   position: relative;
   top: 5px;
+  left: -10px;
   font-size: 26px;
   display: flex;
   align-items: center;
+  width: 32%;
+  min-width: 155px;
+  opacity: 0.4;
 }
 
 .setting > p {
-  opacity: 0.4;
+  cursor: pointer;
   font-size: 0.8rem;
 }
 
 .setting__icon {
-  opacity: 0.4;
   cursor: pointer;
   height: 30px;
   width: 30px;
+  transition: transform 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .setting__menu {
   font-size: 1rem;
-  width: min(200px, 60%);
+  width: 200px;
   background-color: #0c150e;
   border-radius: 10px;
   color: #fff;
   display: flex;
   position: absolute;
   top: 30px;
-  left: -8px;
+  left: -4px;
   z-index: 10;
   flex-direction: column;
   justify-content: space-around;
@@ -56,10 +63,8 @@
   align-items: center;
 }
 
-.setting__menu > input {
-  font-size: 0.75rem;
-  align-self: center;
-  width: 50%;
+.setting__menu form > input,
+.setting__menu form > label {
   cursor: pointer;
 }
 
@@ -72,4 +77,23 @@
 
 .buttons {
   align-self: center;
+}
+
+.buttons input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 1px;
+}
+
+.buttons input:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+.buttons input:active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
 }

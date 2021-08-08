@@ -2,6 +2,11 @@
   font-size: 2rem;
   font-weight: bold;
   position: relative;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .greeting__setting {
@@ -37,9 +42,9 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  height: 48%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 5px;
+  height: 48%;
 }
 
 .greeting__setting-menu input:hover {
