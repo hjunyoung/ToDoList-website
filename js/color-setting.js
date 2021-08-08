@@ -55,11 +55,18 @@ const saveSetting = (e) => {
 
 const resetSetting = (e) => {
   e.preventDefault();
+
+  let resetRandomNumber;
+  do {
+    resetRandomNumber = Math.floor(Math.random() * backgroundColorArray.length);
+  } while (resetRandomNumber === randomNumber);
+
   localStorage.removeItem(FONT_COLOR_KEY);
   localStorage.removeItem(BACKGROUND_COLOR_KEY);
 
   settingMenu.classList.add(DELETED_CLASS);
-  body.style.backgroundColor = backgroundColorArray[randomNumber];
+  backgroundColor = backgroundColorArray[resetRandomNumber];
+  body.style.backgroundColor = backgroundColor;
 };
 
 fontSetting.addEventListener('input', storeFontColor);
